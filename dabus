@@ -80,6 +80,8 @@ def main(argv):
     conf = dabus.config.DabusConf(os.path.expanduser('~/.dabusrc'))
 
     try:
+        if not os.path.isdir(conf['root']):
+            os.mkdir(conf['root'])
         dabus.util.exec_command(cmd, conf, args[1:])
     except dabus.util.UnknownCommandError:
         logger.error("dabus: Command %s not found" % cmd)

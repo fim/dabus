@@ -16,7 +16,7 @@ class ConfigParser(object):
         else:
             self._load_defaults()
             self.export_file(self.filename)
-            
+ 
     def __getitem__(self, key):
         """
         Return val for key
@@ -64,9 +64,9 @@ class ConfigParser(object):
         if self.multiple_values:
             if ' ' in val:
                 return val.split(' ')
-        
+
         return val
-            
+
     def _denormalize_val(self, val):
         if self.multiple_values:
             if not isinstance(val, basestring):
@@ -78,7 +78,7 @@ class ConfigParser(object):
         """
         Get dict of values
         """
-        conf = {} 
+        conf = {}
         if not args:
             conf = self.conf
         else:
@@ -86,7 +86,7 @@ class ConfigParser(object):
                 conf[self._normalize_key(key)] = self[key]
 
         return conf
-    
+
     def set(self, **kwargs):
         """
         Set conf directives from input dict
@@ -172,7 +172,7 @@ class ConfigParser(object):
             f.write(self._compile())
 
 DABUS_DEFAULTS = {
-    'root': '/usr/local/dildo',
+    'root': '/usr/local/dabus',
     'tmpdir': '/usr/local/dabus/tmp',
     'logdir': '/var/log/dabus',
     'use': 'mmx sse sse2 -X'
